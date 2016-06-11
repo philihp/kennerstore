@@ -44,5 +44,8 @@ module Kennerstore
     end
 
     config.autoload_paths += %W(\#{config.root}/lib)
+
+    #might want this for heroku
+    #config.assets.initialize_on_precompile = false
   end
 end
