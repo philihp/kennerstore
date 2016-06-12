@@ -67,6 +67,10 @@ RSpec.configure do |config|
   config.before(:each, type: :controller) do
     include_default_accept_headers
   end
+
+
+
+  #config.raise_errors_for_deprecations!
 end
 
 Shoulda::Matchers.configure do |config|
