@@ -44,9 +44,6 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  # Development
-  gem 'ap'
 end
 
 group :test do
@@ -57,3 +54,7 @@ group :test do
 end
 
 gem 'devise'
+
+group :production do
+  gem 'rails_12factor'
+end

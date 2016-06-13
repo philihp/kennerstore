@@ -36,8 +36,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    ap (0.1.1)
-      httparty (>= 0.7.7)
     arel (6.0.3)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
@@ -70,9 +68,6 @@ GEM
     ffaker (2.2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    httparty (0.13.7)
-      json (~> 1.8)
-      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.5.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -92,7 +87,6 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
-    multi_xml (0.5.5)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -121,6 +115,11 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (4.2.6)
       actionpack (= 4.2.6)
       activesupport (= 4.2.6)
@@ -189,7 +188,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ap
   byebug
   coffee-rails (~> 4.1.0)
   devise
@@ -199,6 +197,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 4.2.6)
+  rails_12factor
   rspec-rails (~> 3.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
