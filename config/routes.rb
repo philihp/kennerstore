@@ -2,6 +2,7 @@ require 'api_constraints'
 
 Rails.application.routes.draw do
 
+  mount SabisuRails::Engine => "/sabisu_rails"
   root 'welcome#index'
 
   devise_for :users
