@@ -4,7 +4,7 @@ SabisuRails.setup do |config|
 
   # Base uri for posting the 
   # config.base_api_uri = nil
-  config.base_api_uri = 'kennerstore.dev'
+  config.base_api_uri = 'kennerstore.dev/api'
 
   # Ignored attributes for building the forms
   # config.ignored_attributes = %w{ created_at updated_at id }
