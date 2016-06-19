@@ -48,12 +48,13 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  # Sabisu Explorer
-  gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
-  gem 'furatto', github: "IcaliaLabs/furatto-rails"
-  gem 'font-awesome-rails'
-  gem 'simple_form'
 end
+
+# Sabisu Explorer is needed in production for asset compilation
+gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
+gem 'furatto', github: "IcaliaLabs/furatto-rails"
+gem 'font-awesome-rails'
+gem 'simple_form'
 
 gem 'devise'
 
