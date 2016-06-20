@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :boardgame do
-    title "MyString"
+    title FFaker::Lorem.words(rand(3)+1).map(&:capitalize).join(' ')
   end
 end
