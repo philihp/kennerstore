@@ -6,10 +6,11 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     if params[:id].to_sym == :me
-      respond_with current_user
+      user = current_user
     else
-      respond_with User.find(params[:id])
+      user = User.find(params[:id])
     end
+    respond_with user
   end
 
   def create
