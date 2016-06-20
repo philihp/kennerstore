@@ -3,15 +3,25 @@ require 'spec_helper'
 describe Api::V1::UsersController do
 
   describe "GET #show" do
-    before(:each) do
-      @user = FactoryGirl.create :user
-      get :show, id: @user.id, format: :json
+    context "querying by id" do
+      before(:each) do
+        @user = FactoryGirl.create :user
+        get :show, id: @user.id, format: :json
+      end
+      it "returns the information about a reporter on a hash" do
+        user_response = json_response
+        expect(user_response[:email]).to eql @user.email
+      end
+      it { should respond_with 200 }
     end
-    it "returns the information about a reporter on a hash" do
-      user_response = json_response
-      expect(user_response[:email]).to eql @user.email
+    context "querying for current user" do
+      it "returns the current user" do
+        @user = FactoryGirl.create :user
+        api_authorization_header @user.auth_token
+        get :show, id: :me, format: :json
+        expect(json_response[:email]).to eql @user.email
+      end
     end
-    it { should respond_with 200 }
   end
 
   describe "POST #create" do
@@ -48,7 +58,7 @@ describe Api::V1::UsersController do
   describe "PUT/PATCH #update" do
     before(:each) do
       @user = FactoryGirl.create :user
-      request.headers['Authorization'] =  @user.auth_token
+      api_authorization_header @user.auth_token
     end
 
     context "when is successfully updated" do

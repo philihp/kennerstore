@@ -1,10 +1,15 @@
+
 class Api::V1::UsersController < ApplicationController
 
   before_action :authenticate_with_token!, only: [:update, :destroy]
   respond_to :json
 
   def show
-    respond_with User.find(params[:id])
+    if params[:id].to_sym == :me
+      respond_with current_user
+    else
+      respond_with User.find(params[:id])
+    end
   end
 
   def create
