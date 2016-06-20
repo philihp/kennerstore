@@ -5,7 +5,9 @@ describe Instance, type: :model do
   subject { instance }
 
   it { should validate_presence_of :state }
-  it { should validate_presence_of :boardgame_id }
+  it { should validate_presence_of :boardgame }
 
   it { should belong_to :boardgame }
+  it { should have_many(:users) }
+  it { should have_many(:entrants) }
 end
