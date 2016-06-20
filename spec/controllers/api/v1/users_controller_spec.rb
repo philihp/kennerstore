@@ -19,7 +19,7 @@ describe Api::V1::UsersController do
         @user = FactoryGirl.create :user
         api_authorization_header @user.auth_token
         get :show, id: :me, format: :json
-        expect(json_response[:email]).to eql @user.email
+        expect(json_response[:user][:email]).to eql @user.email
       end
     end
   end
@@ -44,12 +44,10 @@ describe Api::V1::UsersController do
         post :create, { user: @invalid_user_attributes }, format: :json
       end
       it "renders an errors json" do
-        user_response = json_response[:user]
-        expect(user_response).to have_key(:errors)
+        expect(json_response).to have_key(:errors)
       end
       it "renders the json errors on why the user could not be created" do
-        user_response = json_response
-        expect(user_response[:errors][:email]).to include "can't be blank"
+        expect(json_response[:errors][:email]).to include "can't be blank"
       end
       it { should respond_with 422 }
     end
@@ -78,12 +76,10 @@ describe Api::V1::UsersController do
                          user: { email: "bademail.com" } }, format: :json
       end
       it "renders an errors json" do
-        user_response = json_response[:user]
-        expect(user_response).to have_key(:errors)
+        expect(json_response).to have_key(:errors)
       end
       it "renders the json errors on why the user could not be created" do
-        user_response = json_response[:user]
-        expect(user_response[:errors][:email]).to include "is invalid"
+        expect(json_response[:errors][:email]).to include "is invalid"
       end
       it { should respond_with 422 }
     end
