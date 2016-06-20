@@ -93,7 +93,7 @@ describe Api::V1::UsersController do
     before(:each) do
       @user = FactoryGirl.create :user
       api_authorization_header @user.auth_token
-      delete :destroy, { id: @user.id }, format: :json
+      delete :destroy, { id: @user.id }
     end
     it { should respond_with 204 }
   end
