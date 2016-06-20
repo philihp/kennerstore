@@ -5,5 +5,6 @@ describe Boardgame, type: :model do
   subject { boardgame }
 
   it { should respond_to(:title) }
+  it { should have_many(:instances) }
 
 end
