@@ -5,10 +5,12 @@ This service will server an API for use in Kennerspiel the website, as well as m
 
 ## The Game Plan
 
+- [ ] Setup temp gateway to Weblabora-Svc to prove it's possible. This will later be used when pulling an Instance.
 - [ ] Allow user to sign up
 - [ ] Allow user to sign in
 - [ ] Allow user to create an instance of a game
-- [ ] Allow user to add a move to an instance
+- [ ] View the current state of an instance's board
+- [ ] Allow a user a list of new moves to an instance... it should return the entire move list as well as the board.
 - [ ] Allow user to rewind a move away from an instance. Think about how sometimes a game might not like this, such as rewinding a 'commit' move.
 
 ## Entities
