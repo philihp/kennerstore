@@ -6,4 +6,10 @@ class Instance < ActiveRecord::Base
 
   validates :state, :boardgame, presence: true
 
+  after_initialize :defaults, unless: :persisted?
+
+  def defaults
+    self.state = :fresh
+  end
+
 end
