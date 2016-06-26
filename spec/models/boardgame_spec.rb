@@ -5,6 +5,10 @@ describe Boardgame, type: :model do
   subject { boardgame }
 
   it { should respond_to(:title) }
+  it { should validate_presence_of :title }
+  it { should respond_to(:service) }
+  it { should validate_presence_of :service }
+
   it { should have_many(:instances) }
 
 end

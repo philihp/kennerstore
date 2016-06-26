@@ -12,4 +12,9 @@ class Instance < ActiveRecord::Base
     self.state = :fresh
   end
 
+  def boardstate
+    {}
+  end
+
+
 end

@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-gem 'active_model_serializers', '~> 0.9.0'
+gem 'active_model_serializers', '~> 0.10.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -62,3 +62,5 @@ group :production do
   gem 'rails_12factor'
   gem 'puma'
 end
+
+gem 'httparty'

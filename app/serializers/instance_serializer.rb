@@ -1,3 +1,3 @@
 class InstanceSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :boardstate
 end
