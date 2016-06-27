@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626090509) do
+ActiveRecord::Schema.define(version: 20160627051935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 20160626090509) do
   add_index "instances", ["boardgame_id"], name: "index_instances_on_boardgame_id", using: :btree
   add_index "instances", ["state"], name: "index_instances_on_state", using: :btree
 
+  create_table "movements", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "command"
+    t.integer  "instance_id"
+  end
+
+  add_index "movements", ["instance_id"], name: "index_movements_on_instance_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -64,4 +73,5 @@ ActiveRecord::Schema.define(version: 20160626090509) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "movements", "instances"
 end
