@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :sessions, only: [:create, :destroy]
       resources :boardgames, only: [:show]
       resources :instances, only: [:show, :create]
+      resources :movements, only: [:show, :create, :delete]
     end
   end
 
