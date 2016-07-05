@@ -6,6 +6,7 @@ class Api::V1::InstancesController < ApplicationController
   def show
     instance = Instance.find(params[:id])
     respond_with instance
+    # render json: instance, include: 'movements.command'
   end
 
   def create

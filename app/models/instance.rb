@@ -21,6 +21,8 @@ class Instance < ActiveRecord::Base
     return {} if fresh?
     movelist = self.movelist.join("\n")
     Rails.cache.fetch([boardgame.service, movelist], :expires => 15.minutes) do
+      Rails.logger.info boardgame.service
+      Rails.logger.info movelist
       response = self.class.post(boardgame.service, :query => {
         :actions => movelist
       })
@@ -31,7 +33,7 @@ class Instance < ActiveRecord::Base
   end
 
   def movelist
-    movements.map(&:command)
+    movements.pluck(:command)
   end
 
 end

@@ -1,19 +1,26 @@
 class Api::V1::MovementsController < ApplicationController
   respond_to :json
 
+  def show
+    movement = Movement.find(params[:id])
+    respond_with movement
+  end
+
   def create
     movement = Movement.new(movement_params)
     movement.save
-    instance = movement.instance
-    render status: 201, location: [:api, instance], json: instance
+    render status: 201, location: [:api, movement], json: movement
     # redirect_to [:api, movement.instance]
   end
 
   def destroy
-    # user = User.find_by(auth_token: params[:id])
-    # user.generate_authentication_token!
-    # user.save
-    head 204
+    instance = Instance.find(params[:id])
+    if instance && instance.movements.size > 0
+      instance.movements.last.destroy!
+      head 204
+    else
+      head 404
+    end
   end
 
 private
