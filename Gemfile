@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.2.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '~> 5.0.0'
 # Use postgresql as the database for Active Record, because Heroku
 gem 'pg'
 # Use SCSS for stylesheets
@@ -50,9 +50,6 @@ group :development, :test do
 
 end
 
-# Sabisu Explorer is needed in production for asset compilation
-gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
-gem 'furatto', github: "IcaliaLabs/furatto-rails"
 gem 'font-awesome-rails'
 gem 'simple_form'
 

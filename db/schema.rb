@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -30,28 +29,25 @@ ActiveRecord::Schema.define(version: 20160627051935) do
     t.integer  "instance_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_entrants_on_user_id", using: :btree
   end
-
-  add_index "entrants", ["user_id"], name: "index_entrants_on_user_id", using: :btree
 
   create_table "instances", force: :cascade do |t|
     t.integer  "state"
     t.integer  "boardgame_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["boardgame_id"], name: "index_instances_on_boardgame_id", using: :btree
+    t.index ["state"], name: "index_instances_on_state", using: :btree
   end
-
-  add_index "instances", ["boardgame_id"], name: "index_instances_on_boardgame_id", using: :btree
-  add_index "instances", ["state"], name: "index_instances_on_state", using: :btree
 
   create_table "movements", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "command"
     t.integer  "instance_id"
+    t.index ["instance_id"], name: "index_movements_on_instance_id", using: :btree
   end
-
-  add_index "movements", ["instance_id"], name: "index_movements_on_instance_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -67,11 +63,10 @@ ActiveRecord::Schema.define(version: 20160627051935) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "auth_token",             default: ""
+    t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "movements", "instances"
 end
